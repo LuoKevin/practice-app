@@ -9,6 +9,12 @@ const TodoList: React.FC<TodoListProps> = () => {
     const [inputText, setInputText] = useState<string>('')
     const [tasks, setTasks] = useState<string[]>([])
 
+
+    const deleteItem = (taskText: String) => {
+        let newTasks = tasks.filter(item => item !== taskText)
+        setTasks(newTasks)
+    }
+
     const handleTextChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputText(event.target.value)
     }
@@ -26,13 +32,15 @@ const TodoList: React.FC<TodoListProps> = () => {
                 value={inputText}
                 onChange={handleTextChange}
             />
-            <button
-                onClick={onClick}
+            <button onClick={onClick}>
+                Add task
+            </button>
 
-                />
 
-
-            <TodoListDisplay tasks={tasks}/>
+            <TodoListDisplay
+                tasks={tasks}
+                deleteTask={deleteItem}
+            />
         </div>
     )
 }

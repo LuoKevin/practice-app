@@ -1,15 +1,20 @@
 import React, {useState} from "react";
+import Task from "./Task";
 
 interface TodoListProps {
-    tasks: String[]
+    tasks: string[]
+    deleteTask: (text: string) => void
 }
 
-const TodoListDisplay: React.FC<TodoListProps> = ({tasks}) => {
+const TodoListDisplay: React.FC<TodoListProps> = ({tasks, deleteTask}) => {
     return (
         <ul>
             {tasks.map(task => (
                 <li>
-                    {task}
+                    <Task
+                        text={task}
+                        deleteTask={deleteTask}
+                    />
                 </li>
             ))}
         </ul>
