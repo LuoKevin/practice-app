@@ -1,16 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import TodoList from "./TodoList";
+import React, {useState} from "react";
 
-function App() {
-    return (
-        <div className="App">
-            <TodoList />
-        </div>
-    );
+interface TodoListProps {
+    tasks: String[]
 }
 
-export default App;
+const TodoListDisplay: React.FC<TodoListProps> = ({tasks}) => {
+    return (
+        <ul>
+            {tasks.map(task => (
+                <li>
+                    {task}
+                </li>
+            ))}
+        </ul>
+    )
+}
+
+export default TodoListDisplay;
 
 /**
  *
